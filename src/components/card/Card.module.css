@@ -1,0 +1,20 @@
+.users__list-item {
+  padding: 30px 0 15px;
+  background: #bb9457;
+  border: 1px solid #99582a;
+  border-radius: 5px;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  transform: scale(1);
+  transition: transform 0.25s ease-out;
+}
+
+.users__list-item:hover {
+  transform: scale(1.05);
+}
+
+.users__img {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+}

@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+import CardList from './components/card-list/CardList';
+import SearchBox from './components/search-box/SearchBox';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = { users: [], search: '' };
+  }
+
+  inputChangeHandler = (event) => {
+    this.setState({ search: event.target.value.toLowerCase() });
+  };
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((users) => this.setState({ users: users }));
+  }
+
+  render() {
+    const { users, search } = this.state;
+    const { inputChangeHandler } = this;
+
+    const filteredUsers = users.filter((user) =>
+      user.name.toLowerCase().match(search)
+    );
+
+    return (
+      <div className='App'>
+        <h1 className='title app__title'>Наши друзья</h1>
+        <SearchBox
+          onChange={inputChangeHandler}
+          searchValue={search}
+          placeholder='Поиск пользователей'
+          className='users-search-box'
+        />
+        <CardList users={filteredUsers} />
+      </div>
+    );
+  }
 }
 
 export default App;

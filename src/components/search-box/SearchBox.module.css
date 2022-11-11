@@ -1,0 +1,12 @@
+.search-box {
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 180px;
+  line-height: 30px;
+  margin-bottom: 30px;
+}
+
+.search-box:focus {
+  outline: 2px solid #99582a;
+}
