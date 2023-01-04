@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import Card from '../card/Card';
-import styles from './CardList.module.css';
+import './CardList.css';
 
-const CardList = ({ users }) => {
+import { Monster } from '../../App';
+
+type CardListProps = {
+  users: Monster[];
+};
+
+const CardList = ({ users }: CardListProps) => {
   return (
-    <ul className={styles['users__list']}>
+    <ul className='users__list'>
       {users.map((user) => {
         const { name, id, email } = user;
 
