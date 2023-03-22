@@ -1,4 +1,4 @@
-import { ChangeEvent, Component, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import './App.css';
 import CardList from './components/card-list/CardList';
 import SearchBox from './components/search-box/SearchBox';
@@ -12,7 +12,6 @@ export type Monster = {
 };
 
 const App = () => {
-  console.log('render');
   const [searchValue, setSearchValue] = useState('');
   const [users, setUsers] = useState<Monster[]>([]);
 

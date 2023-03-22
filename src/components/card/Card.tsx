@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { Monster } from '../../App';
 import './Card.css';
 

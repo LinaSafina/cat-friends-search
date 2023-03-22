@@ -1,4 +1,4 @@
-import { ChangeEventHandler, Component } from 'react';
+import { ChangeEventHandler } from 'react';
 import './SearchBox.css';
 
 type SearchBoxProps = {
