@@ -13,6 +13,7 @@ export type Monster = {
 
 const App = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [fetchError, setFetchError] = useState('');
   const [users, setUsers] = useState<Monster[]>([]);
 
   const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -25,10 +26,14 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const users = await getData<Monster[]>(
-        'https://jsonplaceholder.typicode.com/users'
-      );
-      setUsers(users);
+      try {
+        const users = await getData<Monster[]>(
+          'https://jsonplaceholder.typicode.com/users'
+        );
+        setUsers(users);
+      } catch (error) {
+        setFetchError((error as Error).message);
+      }
     };
 
     fetchData();
@@ -46,7 +51,13 @@ const App = () => {
         placeholder='Поиск пользователей'
         className='users-search-box'
       />
-      <CardList users={filteredUsers} />
+      {fetchError && (
+        <p>
+          {`Sorry, we couldn't fetch the users!
+          Error: ${fetchError}`}
+        </p>
+      )}
+      {filteredUsers && <CardList users={filteredUsers} />}
     </div>
   );
 };
