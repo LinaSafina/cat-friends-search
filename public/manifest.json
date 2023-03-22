@@ -21,7 +21,6 @@
     }
   ],
   "start_url": ".",
-  "prefer_related_applications": false,
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
