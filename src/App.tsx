@@ -57,7 +57,12 @@ const App = () => {
           Error: ${fetchError}`}
         </p>
       )}
-      {filteredUsers && <CardList users={filteredUsers} />}
+      {filteredUsers.length !== 0 && <CardList users={filteredUsers} />}
+      {filteredUsers.length === 0 && !fetchError && (
+        <p>
+          {`It seems there are no users with name: ${searchValue.toUpperCase()}`}
+        </p>
+      )}
     </div>
   );
 };
